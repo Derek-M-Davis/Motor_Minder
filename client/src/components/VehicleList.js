@@ -1,36 +1,24 @@
 import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import uuid from 'uuid';
+import {connect} from 'react-redux';
+import {getVehicles, deleteVehicle} from '../actions/vehicleActions';
+import PropTypes from 'prop-types';
 
 class VehicleList extends Component {
-    state = {
-        vehicles: [
-            {id: uuid(), name: 'Mazda'},
-            {id: uuid(), name: 'Honda'},
-            {id: uuid(), name: 'Subaru'}, 
-            {id: uuid(), name: 'Lexus'},
-            {id: uuid(), name: 'GMC'}
-        ]
+    
+    componentDidMount() {
+        this.props.getVehicles();
+    }
+
+    onDeleteClick = (id) => {
+        this.props.deleteVehicle(id);
     }
 
     render(){
-        const { vehicles } = this.state;
+        const { vehicles } = this.props.vehicle;
         return(
             <Container>
-                <Button 
-                    color="dark" 
-                    style={{marginBottom: '2rem'}} 
-                    onClick={() => { 
-                        const name = prompt('Enter Vehicle');
-                        if(name) {
-                            this.setState(state => ({
-                                vehicles: [...state.vehicles, {id: uuid(), name}]
-                            }));
-                        }
-                    }}>
-                    Add Vehicle
-                </Button>
                 <ListGroup>
                     <TransitionGroup className="vehicle-list">
                         {vehicles.map(({id, name})=>(
@@ -40,12 +28,9 @@ class VehicleList extends Component {
                                   className="remove-btn"
                                   color="danger"
                                   size="sm"
-                                  onClick={()=>{
-                                      this.setState(state => ({
-                                          vehicles: state.vehicles.filter(vehicle =>vehicle.id !== id)
-                                      }))
-                                  }}
-                                  >&times;</Button>
+                                  onClick={this.onDeleteClick.bind(this, id)}
+                                  >&times;
+                                  </Button>
                                   {name}
                               </ListGroupItem>
                           </CSSTransition>  
@@ -57,4 +42,13 @@ class VehicleList extends Component {
     }
 }
 
-export default VehicleList;
+VehicleList.propTypes = {
+    getVehicles: PropTypes.func.isRequired,
+    vehicle: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+    vehicle: state.vehicle
+});
+
+export default connect(mapStateToProps, {getVehicles, deleteVehicle})(VehicleList);
