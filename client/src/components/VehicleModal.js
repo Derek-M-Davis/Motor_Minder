@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup} from 'reactstrap';
 import { connect} from 'react-redux';
 import { addVehicle} from '../actions/vehicleActions';
-import uuid from 'uuid';
 
 class VehicleModal extends Component {
     state = {
@@ -23,7 +22,6 @@ class VehicleModal extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const newVehicle = {
-            id: uuid(),
             name: this.state.name
         }
         // Add Vehicle
