@@ -20,6 +20,8 @@ mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology:true, useFindAnd
 // ----- Components Config ----- //
 app.use('/api/vehicles', require('./routes/api/vehicles'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+
 
 
 // Serve Static assets if in production
