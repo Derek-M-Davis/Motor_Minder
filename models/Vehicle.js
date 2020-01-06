@@ -6,6 +6,9 @@ const VehicleSchema = new Schema({
         type:String,
         required: true
     },
+    year: {
+        type:Number,
+    },
     date: {
         type: Date,
         default: Date.now

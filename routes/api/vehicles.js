@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
 // POST route api/vehicles
 router.post('/', auth, (req, res) => {
     const newVehicle = new Vehicle({
-        name: req.body.name
+        name: req.body.name,
+        year: req.body.year
     });
 
     newVehicle.save().then(vehicle => res.json(vehicle))
