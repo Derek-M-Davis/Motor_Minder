@@ -2,11 +2,16 @@ import React, { Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Input, Label, Form, FormGroup} from 'reactstrap';
 import { connect} from 'react-redux';
 import { addVehicle} from '../actions/vehicleActions';
+import PropTypes from 'prop-types';
 
 class VehicleModal extends Component {
     state = {
         modal: false,
         name: ''
+    };
+
+    static propTypes = {
+        isAuthenticated: PropTypes.bool
     }
 
     toggle = () => {
@@ -33,13 +38,13 @@ class VehicleModal extends Component {
     render(){
         return (
             <div>
-                <Button
+                {this.props.isAuthenticated ? <Button
                     color="dark"
                     style={{marginBottom: '2rem'}}
                     onClick={this.toggle}
                 >
                 Add Vehicle
-                </Button>
+                </Button> : <h4 className="mb-3 ml-4">PLease Login to manage Vehicles</h4>}
                 <Modal
                     isOpen={this.state.modal}
                     toggle={this.toggle}
@@ -75,7 +80,8 @@ class VehicleModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    vehicle: state.vehicle    
+    vehicle: state.vehicle,    
+    isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, {addVehicle})(VehicleModal);
