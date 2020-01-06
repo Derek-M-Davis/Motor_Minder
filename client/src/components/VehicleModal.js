@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 class VehicleModal extends Component {
     state = {
         modal: false,
-        name: ''
+        name: '',
+        year: ''
     };
 
     static propTypes = {
@@ -27,7 +28,8 @@ class VehicleModal extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const newVehicle = {
-            name: this.state.name
+            name: this.state.name,
+            year: this.state.year
         }
         // Add Vehicle
         this.props.addVehicle(newVehicle);
@@ -61,8 +63,15 @@ class VehicleModal extends Component {
                                 <Input
                                 type="text"
                                 name="name"
-                                id="vehicle"
-                                placeholder="Add Vehicle"
+                                id="name"
+                                placeholder="Vehicle Name"
+                                onChange={this.onChange}
+                                />
+                                <Input
+                                type="number"
+                                name="year"
+                                id="year"
+                                placeholder="Year"
                                 onChange={this.onChange}
                                 />
                                 <Button

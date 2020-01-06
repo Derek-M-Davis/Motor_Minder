@@ -25,7 +25,7 @@ class VehicleList extends Component {
             <Container>
                 <ListGroup>
                     <TransitionGroup className="vehicle-list">
-                        {vehicles.map(({_id, name})=>(
+                        {vehicles.map(({_id, year, name})=>(
                           <CSSTransition key={_id} timeout={500} classNames="fade">
                               <ListGroupItem>
                                   {this.props.isAuthenticated ? <Button
@@ -35,8 +35,10 @@ class VehicleList extends Component {
                                   onClick={this.onDeleteClick.bind(this, _id)}
                                   >&times;
                                   </Button> : null}
-                                  
+                                  {year}
+                                  {' '} 
                                   {name}
+                                  
                               </ListGroupItem>
                           </CSSTransition>  
                         ))}
