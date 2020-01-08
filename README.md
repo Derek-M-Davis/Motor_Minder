@@ -23,6 +23,7 @@ List of features that are functional and TODOs for future development
 * Edit of vehicles and notes after they are created
 * Mileage calculator with be added for math calculations and ways to improve your mileage
 * Improve styling of modals 
+* app creation for mobile
 
 ## Built With These Technologies
 ### Front-End
