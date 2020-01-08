@@ -1,4 +1,4 @@
-import {GET_VEHICLES, ADD_VEHICLE, DELETE_VEHICLE, VEHICLES_LOADING} from '../actions/types';
+import {GET_VEHICLES, ADD_VEHICLE, EDIT_VEHICLE, DELETE_VEHICLE, VEHICLES_LOADING} from '../actions/types';
 
 const intialState ={
     vehicles: [],
@@ -18,16 +18,21 @@ export default function(state = intialState, action) {
                 ...state,
                 vehicles: [action.payload, ...state.vehicles]
             };
+        case EDIT_VEHICLE:
+            return {
+                ...state,
+                vehicles: [action.payload, ...state.vehicles]
+            };
         case DELETE_VEHICLE:
             return {
                 ...state,
-                vehicles: state.vehicles.filter(vehicle =>vehicle._id !== action.payload)
+                vehicles: state.vehicles.filter(vehicle => vehicle._id !== action.payload)
             };
         case VEHICLES_LOADING:
             return {
                 ...state,
                 loading: true
-            }
+            };
         default:
             return state;
     };
