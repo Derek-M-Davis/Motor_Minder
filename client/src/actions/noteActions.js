@@ -26,16 +26,6 @@ export const addNote = (note) => (dispatch, getState) => {
     .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
 
-// export const editEvent = (event) => (dispatch, getState) => {
-//     axios
-//     .put('/api/vehicles/events/${id}', event, tokenConfig(getState))
-//     .then(res => 
-//       dispatch({
-//           type: EDIT_EVENT,
-//           payload: res.data
-//       }))
-//       .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-//   };
 
 export const deleteNote = (id) => (dispatch, getState) => {
     axios

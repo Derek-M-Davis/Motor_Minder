@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Event = require('../models/Event');
+const Note = require('../models/Note');
 const Schema = mongoose.Schema;
 
 const VehicleSchema = new Schema({
@@ -14,7 +14,7 @@ const VehicleSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    savedEvents: [Event.schema]
+    savedNotes: [Note.schema]
 });
 
 module.exports = Vehicle = mongoose.model('vehicle',VehicleSchema)

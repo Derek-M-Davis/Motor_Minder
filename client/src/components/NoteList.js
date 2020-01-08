@@ -4,6 +4,7 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {connect} from 'react-redux';
 import {getNotes, deleteNote} from '../actions/noteActions';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 class NoteList extends Component {
     static propTypes = {
@@ -22,17 +23,19 @@ class NoteList extends Component {
     render(){
         const { notes } = this.props.note;
         return(
-            <Container>
+            <Container className="mb-3">
                 <ListGroup>
-                    <TransitionGroup className="note-list">
-                        {notes.map(({_id, name, details, date})=>(
+                    <TransitionGroup>
+                        {notes.map(({_id, vehiclename, name, details, date})=>(
                           <CSSTransition key={_id} timeout={500} classNames="fade">
                               <ListGroupItem className="mb-1">
-                                  {name}
-                                  {' '} 
-                                  {details}
-                                  {' '}
-                                  {date}
+                                  {vehiclename}<br/>
+                                  {'Job Description: '} 
+                                  {name} <br/>
+                                  {'Job Details: '} 
+                                  {details} <br/>
+                                  {'On: '} 
+                                  {moment(date).format('l')} <br/>
                                   {this.props.isAuthenticated ? <Button
                                   className="remove-btn"
                                   color="danger"

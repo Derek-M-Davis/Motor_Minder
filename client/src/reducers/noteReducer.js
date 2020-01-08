@@ -1,29 +1,29 @@
-import {GET_VEHICLES, ADD_VEHICLE, DELETE_VEHICLE, VEHICLES_LOADING} from '../actions/types';
+import {GET_NOTES, ADD_NOTE, DELETE_NOTE, NOTES_LOADING} from '../actions/types';
 
 const intialState ={
-    vehicles: [],
+    notes: [],
     loading: false
 };
 
 export default function(state = intialState, action) {
     switch(action.type) {
-        case GET_VEHICLES:
+        case GET_NOTES:
             return {
                 ...state,
-                vehicles: action.payload,
+                notes: action.payload,
                 loading: false
             };
-        case ADD_VEHICLE:
+        case ADD_NOTE:
             return {
                 ...state,
-                vehicles: [action.payload, ...state.vehicles]
+                notes: [action.payload, ...state.notes]
             };
-        case DELETE_VEHICLE:
+        case DELETE_NOTE:
             return {
                 ...state,
-                vehicles: state.vehicles.filter(vehicle => vehicle._id !== action.payload)
+                notes: state.notes.filter(note => note._id !== action.payload)
             };
-        case VEHICLES_LOADING:
+        case NOTES_LOADING:
             return {
                 ...state,
                 loading: true

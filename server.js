@@ -21,7 +21,7 @@ mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology:true, useFindAnd
 app.use('/api/users/vehicles', require('./routes/api/vehicles'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/users/vehicles/events', require('./routes/api/events'));
+app.use('/api/notes', require('./routes/api/notes'));
 
 
 

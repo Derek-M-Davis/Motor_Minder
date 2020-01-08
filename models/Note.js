@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const EventSchema = new Schema({
+const NoteSchema = new Schema({
+    vehiclename: {
+        type:String,
+        required: true
+    },
     name: {
         type:String,
         required: true
@@ -16,4 +20,4 @@ const EventSchema = new Schema({
     }
 });
 
-module.exports = Event = mongoose.model('event',EventSchema)
+module.exports = Note = mongoose.model('note',NoteSchema)

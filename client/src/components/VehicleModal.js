@@ -61,17 +61,20 @@ class VehicleModal extends Component {
                                     Vehicle
                                 </Label>
                                 <Input
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Vehicle Name"
-                                onChange={this.onChange}
-                                />
-                                <Input
                                 type="number"
                                 name="year"
                                 id="year"
                                 placeholder="Year"
+                                onChange={this.onChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+
+                                 <Input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Vehicle Name"
                                 onChange={this.onChange}
                                 />
                                 <Button

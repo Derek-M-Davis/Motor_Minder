@@ -13,21 +13,25 @@ class VehicleList extends Component {
     };
     componentDidMount() {
         this.props.getVehicles();
-    }
+    };
 
     onDeleteClick = (id) => {
         this.props.deleteVehicle(id);
-    }
-
+    };
+    
     render(){
         const { vehicles } = this.props.vehicle;
         return(
-            <Container>
+            <Container className="mb-3">
                 <ListGroup>
                     <TransitionGroup className="vehicle-list">
                         {vehicles.map(({_id, year, name})=>(
                           <CSSTransition key={_id} timeout={500} classNames="fade">
-                              <ListGroupItem>
+                              <ListGroupItem className="mb-1">
+                                  {year}
+                                  {' '} 
+                                  {name}
+                                  {' '}
                                   {this.props.isAuthenticated ? <Button
                                   className="remove-btn"
                                   color="danger"
@@ -35,10 +39,14 @@ class VehicleList extends Component {
                                   onClick={this.onDeleteClick.bind(this, _id)}
                                   >&times;
                                   </Button> : null}
-                                  {year}
-                                  {' '} 
-                                  {name}
-                                  
+                                  {' '}
+                                  {/* {this.props.isAuthenticated ? <Button
+                                  className="edit-btn"
+                                  color="warning"
+                                  size="sm"
+                                  onClick={this.onUpdateClick.bind(this, _id)}
+                                  >&times;
+                                  </Button> : null}   */}
                               </ListGroupItem>
                           </CSSTransition>  
                         ))}
