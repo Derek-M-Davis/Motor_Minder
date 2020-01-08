@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Vehicles = require('../models/Vehicle')
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -18,7 +19,8 @@ const UserSchema = new Schema({
     register_date: {
         type: Date,
         default: Date.now
-    }
+    },
+    savedVehicles: [Vehicles.schema]
 });
 
 module.exports = User = mongoose.model('user', UserSchema)
